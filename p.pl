@@ -1,4 +1,5 @@
 #!/usr/bin/env perl
+# http://www.freescale.com/files/sensors/doc/app_note/AN3785.pdf
 use strict;
 my $verbose=0;
 

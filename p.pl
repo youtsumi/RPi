@@ -2,7 +2,6 @@
 use strict;
 my $verbose=0;
 
-
 #echosys("gpio load i2c");
 echosys("i2cset -y 1 0x60 0x12 0x01");
 my @ret=split(/[\s]+/,`i2cdump -y 1 0x60 i | grep 00: `);
@@ -25,6 +24,7 @@ print "$pcomp\n";
 
 
 sub convcoef {
+	# convert bits to coefficient of AN3785
 	my ($uw,$lw,$signbit,$digibit,$decimalbit,$padbit) = @_;
 	my $bit = (hex($uw)<<8)|hex($lw);
 	printf( "bit = %s %s %d\n", $uw, $lw, $bit) if $verbose;
@@ -40,6 +40,7 @@ sub convcoef {
 }
 
 sub extractbit {
+	# internal subroutine for convcoef
 	my ($bit,$stx,$etx) = @_;
 	my $result=0;
 	printf( "%d, %d\n", $stx, $etx) if $verbose;

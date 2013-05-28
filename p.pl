@@ -1,5 +1,9 @@
 #!/usr/bin/env perl
 # http://www.freescale.com/files/sensors/doc/app_note/AN3785.pdf
+# to add this script as a munin plugin, 
+# put the following in "/etc/munin/plugin-conf.d/munin-node"
+# [pressure]
+# user pi
 use strict;
 my $verbose=0;
 
@@ -21,7 +25,7 @@ my $c11=convcoef(@ret[12,13],1,1,11,11);
 my $c22=convcoef(@ret[14,15],1,1,11,15);
 
 my $pcomp = $a0+($b1+$c11*$padc+$c12*$tadc)*$padc+($b2+$c22*$tadc)*$tadc;
-print "$pcomp\n";
+printf( "%7.2lf\n",$pcomp);
 
 
 sub convcoef {

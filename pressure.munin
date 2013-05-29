@@ -1,0 +1,29 @@
+#!/bin/sh
+
+GETNUM=`/usr/bin/perl /home/pi/src/p.pl`
+
+if [ "$1" = "autoconf" ]; then
+        if [ -n ${GETNUM} ] ; then
+                echo yes
+                exit 0
+        else
+                echo no
+                exit 0
+        fi
+fi
+
+if [ "$1" = "config" ]; then
+        echo 'graph_title pressure AN3785'
+        echo 'graph_args -r --lower-limit 970 --upper-limit 990'
+        echo 'graph_vlabel hPa'
+        echo 'graph_category HK'
+        echo 'pressure0.label hPa'
+        echo 'pressure0.max 1100'
+        echo 'pressure0.min 900'
+        echo 'pressure0.draw LINE1'
+        echo 'pressure0.type GAUGE'
+        echo 'update_rate 60'
+        exit 0
+fi
+
+echo "pressure0.value $GETNUM";

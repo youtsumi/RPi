@@ -1,0 +1,40 @@
+#!/usr/bin/env perl
+
+@ret=`/usr/bin/perl /home/pi/src/t.pl`;
+
+if ( $ARGV[0] =~ "autoconf" ) {
+	if ( $#ret>=0 ) {
+		print "yes";
+		exit 0;
+	} else {
+		print "no";
+		exit 0;
+	}
+}
+
+foreach my $line ( @ret ) {
+	($id, $val) = split(/[\s\t]+=[\t\s]+/,$line);
+	showdevice($id,$val);
+}
+
+sub showdevice {
+	my ($devicename,$val) = @_;
+
+	if ( $ARGV[0] =~ "config" ) {
+		print << "EOF";
+graph_title temperature ds18b20
+graph_args -r --lower-limit 10 --upper-limit 40
+graph_vlabel C
+graph_category HK
+$devicename.label C
+$devicename.max 50
+$devicename.min -20
+$devicename.draw LINE1
+$devicename.type GAUGE
+update_rate 60
+EOF
+		exit 0;
+
+	}
+	print "$devicename.value $val";
+}

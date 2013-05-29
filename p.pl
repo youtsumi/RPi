@@ -12,11 +12,11 @@
 # [pressure]
 # user pi
 #
-# Error handling may not be sufficient.
+# Error handling should not be sufficient.
 use strict;
 my $verbose=0;
 
-# retrieve values from I2C device
+# retrieve a data packet from the I2C device
 echosys("gpio load i2c");
 echosys("i2cset -y 1 0x60 0x12 0x01");
 my @ret=split(/[\s]+/,`i2cdump -y 1 0x60 i | grep 00: `);
@@ -24,7 +24,7 @@ my @ret=split(/[\s]+/,`i2cdump -y 1 0x60 i | grep 00: `);
 print STDERR @ret if $verbose;
 print STDERR "\n" if $verbose;
 
-# then process a data packet to show actual pressure value
+# then process the data packet to show actual pressure value
 my $padc= getadc(@ret[0,1]);
 my $tadc= getadc(@ret[2,3]);
 print STDERR "padc = $padc, tadc = $tadc\n" if $verbose;

@@ -13,7 +13,7 @@ if [ "$1" = "autoconf" ]; then
 fi
 
 if [ "$1" = "config" ]; then
-        echo 'graph_title pressure AN3785'
+        echo 'graph_title pressure MPL115A2'
         echo 'graph_args -r --lower-limit 970 --upper-limit 990'
         echo 'graph_vlabel hPa'
         echo 'graph_category HK'

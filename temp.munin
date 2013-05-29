@@ -26,15 +26,15 @@ graph_title temperature ds18b20
 graph_args -r --lower-limit 10 --upper-limit 40
 graph_vlabel C
 graph_category HK
-$devicename.label C
+$devicename.label $devicename
 $devicename.max 50
 $devicename.min -20
 $devicename.draw LINE1
 $devicename.type GAUGE
 update_rate 60
 EOF
-		exit 0;
 
+	} else {
+		print "$devicename.value $val";
 	}
-	print "$devicename.value $val";
 }

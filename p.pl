@@ -2,7 +2,9 @@
 # This script will retrieve pressure value from I2C sensor
 # and then print out it. I assume the sensor is
 # http://www.freescale.com/files/sensors/doc/app_note/AN3785.pdf
-#
+# I use MPL115A2 barometer module and Raspberry Pi (Rev.2).
+# http://strawberry-linux.com/catalog/items?code=12103
+# 
 # An application of this script is a munin plugin.
 #
 # To enable this script as a munin plugin, 

@@ -70,9 +70,9 @@ sub extractbit {
 	my $result=0;
 	printf( STDERR "%d, %d\n2nd: ", $stx, $etx) if $verbose;
 	for(my $i=$stx;$i<$etx;$i++) {
-		my $j=$i-$stx;
-		$result|=(($bit&(1<<(15-$i)))?1:0)<<($etx-($i+1));
-		printf( STDERR "%d", (($bit&(1<<(15-$i)))?1:0)) if $verbose;
+		my $a =(($bit&(1<<(15-$i)))?1:0);
+		$result|=$a<<($etx-($i+1));
+		printf( STDERR "%d", $a) if $verbose;
 	}
 	printf( STDERR "\n%d\n", $result) if $verbose;
 	return $result;

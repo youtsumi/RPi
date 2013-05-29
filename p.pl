@@ -27,20 +27,22 @@ print STDERR "\n" if $verbose;
 # then process a data packet to show actual pressure value
 my $padc= getadc(@ret[0,1]);
 my $tadc= getadc(@ret[2,3]);
+print STDERR "padc = $padc, tadc = $tadc\n" if $verbose;
 
 my $a0=convcoef(@ret[4,5],1,13,16,0);
 my $b1=convcoef(@ret[6,7],1,3,16,0);
 my $b2=convcoef(@ret[8,9],1,2,16,0);
-my $c12=convcoef(@ret[10,11],1,2,16,9);
+my $c12=convcoef(@ret[10,11],1,2,16,10);
 my $c11=convcoef(@ret[12,13],1,1,11,12);
 my $c22=convcoef(@ret[14,15],1,1,11,16);
 print STDERR "$a0 $b1 $b2 $c12 $c11 $c22\n" if $verbose;
 
 my $pcomp = $a0+($b1+$c11*$padc+$c12*$tadc)*$padc+($b2+$c22*$tadc)*$tadc;
-printf( "%7.2lf\n",$pcomp);
+my $decpcomp = (65./1023*$pcomp+50.)*10;
+printf( "%7.2lf\n",$decpcomp);
 
 sub convcoef {
-	# convert bits to coefficient of AN3785
+	# convert words to coefficients of AN3785
 	# padbit must be added 1 when not zero
 	my ($uw,$lw,$signbit,$digibit,$decimalbit,$padbit) = @_;
 	my $bit = (hex($uw)<<8)|hex($lw);
@@ -78,7 +80,7 @@ sub extractbit {
 
 sub getadc {
 	# read 16bit value from given 2 characters
-	return hex($_[0])<<2^(hex($_[1])&0x3);
+	return (hex($_[0])<<8|(hex($_[1])&0xC0))>>6;
 }
 
 sub echosys {

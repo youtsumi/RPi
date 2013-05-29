@@ -39,7 +39,7 @@ print STDERR "$a0 $b1 $b2 $c12 $c11 $c22\n" if $verbose;
 
 my $pcomp = $a0+($b1+$c11*$padc+$c12*$tadc)*$padc+($b2+$c22*$tadc)*$tadc;
 my $decpcomp = (65./1023*$pcomp+50.)*10;
-printf( "%7.2lf\n",$decpcomp);
+printf( "%7.2lf\n",$decpcomp);	# hPa
 
 sub convcoef {
 	# convert words to coefficients of AN3785

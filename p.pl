@@ -1,12 +1,12 @@
 #!/usr/bin/env perl
-# This script will retrieve pressure value and then print out it.
-# I assume that the communication line is I2C and the sensor is
+# This script will retrieve pressure value from I2C sensor
+# and then print out it. I assume the sensor is
 # http://www.freescale.com/files/sensors/doc/app_note/AN3785.pdf
 #
 # An application of this script is a munin plugin.
 #
 # To enable this script as a munin plugin, 
-# You need to put the following lines in "/etc/munin/plugin-conf.d/munin-node"
+# you need to put the following lines in "/etc/munin/plugin-conf.d/munin-node"
 # [pressure]
 # user pi
 #

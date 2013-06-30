@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-@ret=`/usr/bin/perl /home/pi/src/t.pl`;
+@ret=`/usr/bin/perl /home/pi/RPi/t.pl`;
 
 if ( $ARGV[0] =~ "autoconf" ) {
 	if ( $#ret>=0 ) {

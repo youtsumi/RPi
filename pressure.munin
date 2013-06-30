@@ -14,7 +14,7 @@ fi
 
 if [ "$1" = "config" ]; then
         echo 'graph_title pressure MPL115A2'
-        echo 'graph_args -r --lower-limit 540 --upper-limit 560'
+        echo 'graph_args -r --lower-limit 540 --upper-limit 546'
         echo 'graph_vlabel hPa'
         echo 'graph_category HK'
         echo 'pressure0.label hPa'

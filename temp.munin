@@ -23,12 +23,12 @@ sub showdevice {
 	if ( $ARGV[0] =~ "config" ) {
 		print << "EOF";
 graph_title temperature ds18b20
-graph_args -r --lower-limit 10 --upper-limit 40
+graph_args -r --lower-limit -20 --upper-limit 40
 graph_vlabel C
 graph_category HK
 $devicename.label $devicename
 $devicename.max 50
-$devicename.min -20
+$devicename.min -40
 $devicename.draw LINE1
 $devicename.type GAUGE
 update_rate 60

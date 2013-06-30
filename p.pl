@@ -9,7 +9,7 @@
 #
 # To enable this script as a munin plugin, 
 # you need to put the following lines in "/etc/munin/plugin-conf.d/munin-node"
-# [pressure]
+# [pressure.munin]
 # user pi
 #
 # Error handling should not be sufficient.

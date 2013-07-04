@@ -1,6 +1,6 @@
 #!/bin/sh
 
-GETNUM=`/usr/bin/perl /home/pi/src/p.pl`
+GETNUM=`/usr/bin/perl /home/pi/RPi/p.pl`
 
 if [ "$1" = "autoconf" ]; then
         if [ -n ${GETNUM} ] ; then
@@ -14,7 +14,7 @@ fi
 
 if [ "$1" = "config" ]; then
         echo 'graph_title pressure MPL115A2'
-        echo 'graph_args -r --lower-limit 546 --upper-limit 556'
+        echo 'graph_args -r --lower-limit 548 --upper-limit 558'
         echo 'graph_vlabel hPa'
         echo 'graph_category HK'
         echo 'pressure0.label hPa'

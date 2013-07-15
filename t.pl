@@ -32,7 +32,7 @@ foreach my $device ( @devices ) {
 			next;
 		}
 
-		$sensor_temp =~ /t=(\d+)/i;
+		$sensor_temp =~ /t=([\d-]+)/i;
 		$tempreature = (($1/1000));
 
 		printf( "%s = %6.3lf\n", $device, $tempreature); 
